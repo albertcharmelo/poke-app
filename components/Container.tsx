@@ -4,9 +4,12 @@ import { Search } from 'lucide-react';
 import PokemonCard from './PokemonCard';
 import usePokemons from '@/hooks/usePokemons';
 import Image from 'next/image';
+import { useState } from 'react';
+import Header from './Header';
 
 const Container = () => {
-  const { pokemons, error, isLoading } = usePokemons(0);
+  const [search, setSearch] = useState('');
+  const { pokemons, error, isLoading } = usePokemons(0, search);
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -15,21 +18,20 @@ const Container = () => {
     return <h1>Error: {error.message}</h1>;
   }
 
+  const handleSearchPokemon = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 3) {
+      setSearch(e.target.value);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col gap-2 justify-center">
-        <div className="w-full flex justify-center items-center">
-          <Image
-            src={'/pokemon_logo.png'}
-            width={300}
-            height={300}
-            alt="pokemon logo"
-          />
-        </div>
-
+        <Header />
         <div className="w-full relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2" />
           <input
+            onChange={handleSearchPokemon}
             placeholder="Buscar Pokemon..."
             type="text"
             className="
@@ -61,7 +63,7 @@ const Container = () => {
         
         gap-4 containerPokemons"
         >
-          {pokemons?.map((pokemon) => (
+          {pokemons?.map((pokemon: Pokemon) => (
             <PokemonCard
               key={pokemon.id}
               name={pokemon.name}

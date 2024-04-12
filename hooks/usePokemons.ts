@@ -14,9 +14,6 @@ async function fetchPokemon(url: string): Promise<Pokemon> {
 
 function usePokemons(page: number, search: string = '') {
   let base_url = `https://pokeapi.co/api/v2/pokemon?offset=${page * 30}&limit=30`;
-  if (search) {
-    base_url = `https://pokeapi.co/api/v2/pokemon/${search}`;
-  }
 
   const { data, error } = useSWR(
     base_url,

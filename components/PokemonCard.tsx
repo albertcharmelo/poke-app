@@ -1,5 +1,7 @@
+import { handleNumberPokemon } from '@/utils/handleText';
 import { handleTypeColors } from '@/utils/handleTypeColors';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface PokemonCardProps {
   name: string;
@@ -14,12 +16,9 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
   type,
   number,
 }) => {
-  const handleNumberPokemon = (number: number) => {
-    return number < 10 ? `00${number}` : number < 100 ? `0${number}` : number;
-  };
-
   return (
-    <div
+    <Link
+      href={`/pokemon/${name}`}
       style={{
         boxShadow:
           'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px',
@@ -42,7 +41,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
       <p className="text-center text-sm text-pokeTitle">
         #{handleNumberPokemon(number)}
       </p>
-    </div>
+    </Link>
   );
 };
 
