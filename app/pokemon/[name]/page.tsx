@@ -1,5 +1,6 @@
 'use client';
 import Header from '@/components/Header';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { handleNumberPokemon } from '@/utils/handleText';
 import {
   handleTypeBackgroundImage,
@@ -61,7 +62,7 @@ function PokemonPage() {
               <div className="flex flex-col items-center justify-center">
                 <p className="text-white text-xl font-bold">
                   #{handleNumberPokemon(pokemon.id)}
-                  {pokemon.types.map((type: string) => (
+                  {pokemon.types.map((type: { type: { name: string } }) => (
                     <span
                       key={type.type.name}
                       className="text-white text-sm font-bold"
@@ -72,13 +73,21 @@ function PokemonPage() {
                 </p>
               </div>
             </div>
-            <div className="w-full flex flex-col items-center justify-center">
-              <h2 className="text-2xl font-bold text-pokeTitle">Descripcion</h2>
-              <p className="text-center text-lg">{pokemon.species.name}</p>
-              <h2 className="text-2xl font-bold text-pokeTitle">Altura</h2>
-              <p className="text-center text-lg">{pokemon.height / 10} m</p>
-              <h2 className="text-2xl font-bold text-pokeTitle">Peso</h2>
-              <p className="text-center text-lg">{pokemon.weight / 10} kg</p>
+            <div className="w-full flex flex-col justify-center p-4">
+              <Tabs defaultValue="stats" className="w-[400px]">
+                <TabsList>
+                  <TabsTrigger value="stats">Caracteristicas</TabsTrigger>
+                  <TabsTrigger value="moves">Movimientos</TabsTrigger>
+                  <TabsTrigger value="evolution">Evoluciones</TabsTrigger>
+                </TabsList>
+                <TabsContent value="stats">
+                  Make changes to your account here.
+                </TabsContent>
+                <TabsContent value="moves">
+                  Change your password here.
+                </TabsContent>
+                <TabsContent value="evolution">Evolution</TabsContent>
+              </Tabs>
             </div>
           </div>
         </div>
