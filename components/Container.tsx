@@ -16,7 +16,7 @@ const Container = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 justify-center">
         <h1 className="text-4xl font-bold  text-pokeTitle">Pokedex</h1>
         <h2 className="text-md font-bold  text-pokeSecondary">
           Tu fuente de información confiable sobre todas las especies de
@@ -45,7 +45,16 @@ const Container = () => {
             "
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 containerPokemons">
+        <div
+          className="grid grid-cols-2 
+        md:grid-cols-3
+        lg:grid-cols-4
+        xl:grid-cols-5
+
+        
+        
+        gap-4 containerPokemons"
+        >
           {pokemons?.map((pokemon) => (
             <PokemonCard
               key={pokemon.id}
