@@ -28,7 +28,7 @@ function PokemonPage() {
     fetcher,
   );
 
-  if (pokemonError || evolutionError)
+  if (error || evolutionError)
     return <div>Error al cargar la información del Pokémon.</div>;
   if (!pokemon || !evolutionData) return <div>Cargando...</div>;
 
