@@ -1,55 +1,39 @@
 import useSWR from 'swr';
+const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  const response = await res.json();
+  const url_chain = response.evolution_chain.url;
+  const res_chain = await fetch(url_chain);
+  const chain = await res_chain.json();
 
-function usePokemonDataAndEvolutions(pokemonName: string) {
-  const fetchPokemonData = async (name: string) => {
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then(
-      (res) => res.json(),
+  let currentEvolution = chain.chain;
+  let evolutions = [];
+
+  while (currentEvolution) {
+    const pokemonRes = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${currentEvolution.species.name}`,
     );
-    return {
-      id: data.id,
-      name: data.name,
-      image: data.sprites.front_default,
-    };
-  };
+    const pokemonData = await pokemonRes.json();
 
-  const fetchPokemonSpecies = async (name: string) => {
-    const data = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${name}`,
-    ).then((res) => res.json());
-    return data.evolution_chain.url;
-  };
+    evolutions.push({
+      id: pokemonData.id,
+      name: pokemonData.name,
+      image: pokemonData.sprites.front_default,
+    });
+    currentEvolution = currentEvolution.evolves_to[0];
+  }
 
-  const fetcherEvolution = async (url: string) => {
-    const evolutionChainUrl = await fetchPokemonSpecies(pokemonName);
-    const data = await fetch(evolutionChainUrl).then((res) => res.json());
-
-    const evolutionChain = [];
-    let currentStage = data.chain;
-
-    while (currentStage) {
-      evolutionChain.push(currentStage.species.name);
-      currentStage = currentStage.evolves_to[0];
-    }
-
-    return evolutionChain;
-  };
-
-  const { data: pokemon, error: pokemonError } = useSWR(
-    pokemonName ? `https://pokeapi.co/api/v2/pokemon/${pokemonName}` : null,
-    fetchPokemonData,
-  );
-
-  const { data: evolutionData, error: evolutionError } = useSWR(
-    pokemon ? `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}` : null,
-    fetcherEvolution,
+  return evolutions;
+};
+export const usePokemonEvolutions = (name: string) => {
+  const { data, error, isLoading } = useSWR(
+    name ? `https://pokeapi.co/api/v2/pokemon-species/${name}` : null,
+    fetcher,
   );
 
   return {
-    pokemon,
-    evolutionData,
-    isLoading: !pokemonError && !pokemon,
-    isError: pokemonError || evolutionError,
+    dataEvolution: data,
+    dataError: error,
+    loading: isLoading,
   };
-}
-
-export default usePokemonDataAndEvolutions;
+};

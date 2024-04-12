@@ -1,9 +1,8 @@
 'use client';
 
 import { Search } from 'lucide-react';
-import PokemonCard from './PokemonCard';
+import PokemonCard from './atoms/PokemonCard';
 import usePokemons from '@/hooks/usePokemons';
-import Image from 'next/image';
 import { useState } from 'react';
 import Header from './Header';
 

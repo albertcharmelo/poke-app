@@ -16,18 +16,19 @@ interface PokemonCardDetailProps {
     sprites: { front_default: string };
     name: string;
   };
+  evolutions: { id: number; name: string; image: string }[] | undefined;
 }
 
-const PokemonCardDetail = ({ pokemon }: PokemonCardDetailProps) => {
+const PokemonCardDetail = ({ pokemon, evolutions }: PokemonCardDetailProps) => {
   return (
     <div className="bg-white  flex flex-col items-center min-h-[80vh] ">
       <HeaderPokemonCard pokemon={pokemon} />
       <div className="w-full flex flex-col justify-center px-4 pb-10 pt-4">
-        <Tabs defaultValue="stats" className="w-full">
+        <Tabs defaultValue="stats" className="w-full overflow-x-auto">
           <TabsList>
-            <TabsTrigger value="stats">Caracteristicas</TabsTrigger>
-            <TabsTrigger value="moves">Movimientos</TabsTrigger>
-            <TabsTrigger value="evolution">Evoluciones</TabsTrigger>
+            <TabsTrigger value="stats">Stats</TabsTrigger>
+            <TabsTrigger value="moves">Moves</TabsTrigger>
+            <TabsTrigger value="evolution">Evolutions</TabsTrigger>
           </TabsList>
           <TabsContent value="stats">
             <BagdesTypesPokemon types={pokemon.types} />
@@ -43,14 +44,18 @@ const PokemonCardDetail = ({ pokemon }: PokemonCardDetailProps) => {
             </div>
           </TabsContent>
           <TabsContent value="evolution">
-            <div className="flex flex-col items-center justify-center">
-              <Image
-                src={pokemon.sprites.front_default}
-                width={200}
-                height={200}
-                alt={pokemon.name}
-              />
-              <p className="capitalize text-xl font-bold">{pokemon.name}</p>
+            <div className="flex flex-col items-center justify-center md:flex-row gap-2 md:gap-8">
+              {evolutions?.map((evolution) => (
+                <div key={evolution.id} className="flex flex-col items-center">
+                  <Image
+                    src={evolution.image}
+                    alt={evolution.name}
+                    width={96}
+                    height={96}
+                  />
+                  <p>{evolution.name}</p>
+                </div>
+              ))}
             </div>
           </TabsContent>
         </Tabs>
