@@ -27,7 +27,7 @@ function PokemonPage() {
     <div className="flex flex-col justify-center px-8">
       <div className="flex flex-col gap-2 justify-center items-center">
         <Header />
-        <div className="w-full lg:w-1/2 containerPokemons rounded-3xl min-h-[80vh]">
+        <div className="w-full lg:w-1/2 containerPokemons rounded-3xl min-h-[75vh] max-h-[75vh]">
           <PokemonCardDetail pokemon={pokemon} evolutions={dataEvolution} />
         </div>
       </div>
