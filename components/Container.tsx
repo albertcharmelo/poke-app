@@ -3,6 +3,7 @@
 import { Search } from 'lucide-react';
 import PokemonCard from './PokemonCard';
 import usePokemons from '@/hooks/usePokemons';
+import Image from 'next/image';
 
 const Container = () => {
   const { pokemons, error, isLoading } = usePokemons(0);
@@ -17,14 +18,19 @@ const Container = () => {
   return (
     <>
       <div className="flex flex-col gap-2 justify-center">
-        <h1 className="text-4xl font-bold  text-pokeTitle">Pokedex</h1>
-        <h2 className="text-md font-bold  text-pokeSecondary">
-          Tu fuente de información confiable sobre todas las especies de
-          Pokémon, sus habilidades y hábitats. ¡Atrápalos a todos!
-        </h2>
+        <div className="w-full flex justify-center items-center">
+          <Image
+            src={'/pokemon_logo.png'}
+            width={300}
+            height={300}
+            alt="pokemon logo"
+          />
+        </div>
+
         <div className="w-full relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2" />
           <input
+            placeholder="Buscar Pokemon..."
             type="text"
             className="
             bg-neutral-50

@@ -27,7 +27,24 @@ body {
   }
 
   .containerPokemons {
-    height: 80vh;
+    height: 73vh;
     overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+  }
+
+  /* Estilos de la barra de desplazamiento para Chrome, Edge y Safari */
+  .containerPokemons::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .containerPokemons::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .containerPokemons::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.7);
+    border-radius: 20px;
+    border: 3px solid transparent;
   }
 }
