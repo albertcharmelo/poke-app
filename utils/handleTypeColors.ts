@@ -48,9 +48,9 @@ export function handleTypeBackgroundImage(type: string = '') {
   const imageMap: { [key: string]: string } = {
     normal: 'url(/details/normal.png)',
     fighting: 'url(/details/fighting.png)',
-    flying: '#A890F0',
-    poison: '#A040A0',
-    ground: '#E0C068',
+    flying: 'url(/details/flying.png)',
+    poison: 'url(/details/poison.png)',
+    ground: 'url(/details/ground.png)',
     rock: 'url(/details/rock.png)',
     bug: 'url(/details/bug.jpg)',
     ghost: 'url(/details/ghost.png)',
@@ -59,11 +59,11 @@ export function handleTypeBackgroundImage(type: string = '') {
     water: 'url(/details/water.png)',
     grass: 'url(/details/grass.jpeg)',
     electric: 'url(/details/electric.png)',
-    psychic: '#F8A0E0',
-    ice: '#98D8D8',
-    dragon: '#7038F8',
-    dark: '#705848',
-    fairy: '#EE99AC',
+    psychic: 'url(/details/psychic.png)',
+    ice: 'url(/details/ice.png)',
+    dragon: 'url(/details/dragon.png)',
+    dark: 'url(/details/dark.png)',
+    fairy: 'url(/details/fairy.png)',
   };
 
   return imageMap[type];
