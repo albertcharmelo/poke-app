@@ -131,17 +131,7 @@ function PokemonPage() {
                   </div>
                 </TabsContent>
                 <TabsContent value="evolution">
-                  <div className="flex flex-col items-center justify-center">
-                    <Image
-                      src={pokemon.sprites.front_default}
-                      width={200}
-                      height={200}
-                      alt={pokemon.name}
-                    />
-                    <p className="capitalize text-xl font-bold">
-                      {pokemon.name}
-                    </p>
-                  </div>
+                  <div className="flex flex-col items-center justify-center"></div>
                 </TabsContent>
               </Tabs>
             </div>
