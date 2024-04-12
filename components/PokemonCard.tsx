@@ -25,7 +25,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
         boxShadow:
           'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px',
       }}
-      className={`p-8 rounded-2xl bg-white flex flex-col justify-center items-center`}
+      className={`p-8 rounded-2xl bg-white flex flex-col justify-center items-center gap-2`}
     >
       <Image
         src={imageUrl}
