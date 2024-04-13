@@ -45,7 +45,7 @@ To run tests, run the following command
 
 ## Demo
 
-[Go to demo, just click here!](poke-es4s4s275-albert-charmelos-projects.vercel.app)
+[Go to demo, just click here!](https://poke-app-eight-theta.vercel.app/)
 
 
 ## Screenshots
