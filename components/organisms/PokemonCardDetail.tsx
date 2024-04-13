@@ -21,13 +21,13 @@ interface PokemonCardDetailProps {
 }
 
 const PokemonCardDetail = ({ pokemon, evolutions }: PokemonCardDetailProps) => {
-  const pokemonStore: PokemonStore = usePokemonStore();
+  const { addPokemon }: PokemonStore = usePokemonStore();
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     // Registrar que ha sido visto
-    pokemonStore.addPokemon({
+    addPokemon({
       id: pokemon.id,
       name: pokemon.name,
       image: pokemon.sprites.front_default,
@@ -35,7 +35,7 @@ const PokemonCardDetail = ({ pokemon, evolutions }: PokemonCardDetailProps) => {
         (type: { type: { name: string } }) => type.type.name,
       ),
     });
-  }, [pokemon]);
+  }, [pokemon, addPokemon]);
 
   return (
     <div className="bg-white  flex flex-col items-center  rounded-3xl">

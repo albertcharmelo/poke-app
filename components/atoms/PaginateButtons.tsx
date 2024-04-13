@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 
 interface PaginateButtonsProps {
-  setPageIndex: React.Dispatch<React.SetStateAction<number>>;
+  setPageIndex: (page: number) => void;
   currentPage: number;
 }
 
@@ -23,7 +23,9 @@ const PaginateButtons = ({
                         hover:bg-gray-100
                         transition-colors  
                         "
-          onClick={() => setPageIndex((prev: number) => prev - 1)}
+          onClick={
+            currentPage > 0 ? () => setPageIndex(currentPage - 1) : undefined
+          }
         >
           <Image
             src="/arrow_left.png"
@@ -43,7 +45,7 @@ const PaginateButtons = ({
             transition-colors
              
           "
-        onClick={() => setPageIndex((prev: number) => prev + 1)}
+        onClick={() => setPageIndex(currentPage + 1)}
       >
         <Image
           src="/arrow_right.png"

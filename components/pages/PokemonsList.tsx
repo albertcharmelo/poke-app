@@ -3,11 +3,11 @@ import PokemonCard from '../atoms/PokemonCard';
 import usePokemons from '@/hooks/usePokemons';
 import PaginateButtons from '../atoms/PaginateButtons';
 import Loader from '../atoms/Loader';
-import usePagination from '@/hooks/usePagination';
 import { usePokemonStore } from '@/store/usePokemonStore';
+import { usePaginationStore } from '@/store/usePaginationStore';
 const PokemonsList = () => {
-  const [pageIndex, setPageIndex] = usePagination('page', 0);
-  const { pokemons, error, isLoading } = usePokemons(pageIndex);
+  const { pageViewed, setPage }: PaginationStore = usePaginationStore();
+  const { pokemons, error, isLoading } = usePokemons(pageViewed);
   const checkPokemonInStore = usePokemonStore((state) => state.pokemons);
   if (isLoading) {
     return (
@@ -26,7 +26,7 @@ const PokemonsList = () => {
   return (
     <>
       <div className="flex flex-col gap-2 justify-center">
-        <PaginateButtons setPageIndex={setPageIndex} currentPage={pageIndex} />
+        <PaginateButtons setPageIndex={setPage} currentPage={pageViewed} />
         <div className="grid grid-cols-2   md:grid-cols-3  lg:grid-cols-4  xl:grid-cols-5  gap-4 containerPokemons">
           {pokemons?.map((pokemon: Pokemon) => {
             const isPokemonInStore = checkPokemonInStore.some(
