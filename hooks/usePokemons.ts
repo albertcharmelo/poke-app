@@ -1,5 +1,5 @@
+'use client';
 import useSWR from 'swr';
-
 async function fetchPokemon(url: string): Promise<Pokemon> {
   const response = await fetch(url);
   const data: PokemonData = await response.json();
@@ -12,8 +12,8 @@ async function fetchPokemon(url: string): Promise<Pokemon> {
   };
 }
 
-function usePokemons(page: number, search: string = '') {
-  let base_url = `https://pokeapi.co/api/v2/pokemon?offset=${page * 30}&limit=30`;
+function usePokemons(page: number) {
+  let base_url = `https://pokeapi.co/api/v2/pokemon?offset=${page * 40}&limit=40`;
 
   const { data, error } = useSWR(
     base_url,

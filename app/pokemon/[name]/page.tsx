@@ -24,10 +24,9 @@ function PokemonPage() {
   if (!pokemon || loading) return <div>Cargando...</div>;
 
   return (
-    <div className="flex flex-col justify-center px-8">
-      <div className="flex flex-col gap-2 justify-center items-center">
-        <Header />
-        <div className="w-full lg:w-1/2 containerPokemons rounded-3xl min-h-[75vh] max-h-[75vh]">
+    <div className="flex flex-col justify-center px-8 pb-10 ">
+      <div className="flex flex-col gap-2 justify-center items-center ">
+        <div className="w-full lg:w-1/2 containerPokemonsDetails rounded-3xl ">
           <PokemonCardDetail pokemon={pokemon} evolutions={dataEvolution} />
         </div>
       </div>

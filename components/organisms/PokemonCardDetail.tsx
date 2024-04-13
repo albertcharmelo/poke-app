@@ -21,10 +21,10 @@ interface PokemonCardDetailProps {
 
 const PokemonCardDetail = ({ pokemon, evolutions }: PokemonCardDetailProps) => {
   return (
-    <div className="bg-white  flex flex-col items-center min-h-[80vh] ">
+    <div className="bg-white  flex flex-col items-center  rounded-3xl">
       <HeaderPokemonCard pokemon={pokemon} />
       <div className="w-full flex flex-col justify-center px-4 pb-10 pt-4">
-        <Tabs defaultValue="stats" className="w-full overflow-x-auto">
+        <Tabs defaultValue="stats" className="w-full">
           <TabsList>
             <TabsTrigger value="stats">Stats</TabsTrigger>
             <TabsTrigger value="moves">Moves</TabsTrigger>

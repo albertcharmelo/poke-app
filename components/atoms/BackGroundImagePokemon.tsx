@@ -12,7 +12,7 @@ function BackGroundImagePokemon({
 }: React.PropsWithChildren<BackGroundImagePokemonProps>) {
   return (
     <div
-      className="w-full flex flex-col py-4 items-center justify-center relative"
+      className="w-full flex flex-col py-4 items-center justify-center relative rounded-t-3xl"
       style={{
         backgroundImage: handleTypeBackgroundImage(typeName),
         backgroundSize: 'cover',
