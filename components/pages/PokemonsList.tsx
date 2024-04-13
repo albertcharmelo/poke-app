@@ -5,10 +5,12 @@ import PaginateButtons from '../atoms/PaginateButtons';
 import Loader from '../atoms/Loader';
 import { usePokemonStore } from '@/store/usePokemonStore';
 import { usePaginationStore } from '@/store/usePaginationStore';
+import Error from '../atoms/Error';
 const PokemonsList = () => {
   const { pageViewed, setPage }: PaginationStore = usePaginationStore();
   const { pokemons, error, isLoading } = usePokemons(pageViewed);
   const checkPokemonInStore = usePokemonStore((state) => state.pokemons);
+
   if (isLoading) {
     return (
       <div className="flex flex-col gap-2 justify-center items-center">
@@ -20,7 +22,13 @@ const PokemonsList = () => {
   }
 
   if (error) {
-    return <h1>Error: {error.message}</h1>;
+    return (
+      <div className="flex flex-col gap-2 justify-center items-center">
+        <div className="w-auto">
+          <Error />
+        </div>
+      </div>
+    );
   }
 
   return (

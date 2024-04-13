@@ -24,8 +24,6 @@ const PokemonCardDetail = ({ pokemon, evolutions }: PokemonCardDetailProps) => {
   const { addPokemon }: PokemonStore = usePokemonStore();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     // Registrar que ha sido visto
     addPokemon({
       id: pokemon.id,
