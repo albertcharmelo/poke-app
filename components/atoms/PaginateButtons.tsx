@@ -16,6 +16,7 @@ const PaginateButtons = ({
     <div className="flex w-full justify-center gap-4">
       {currentPage > 0 && (
         <div
+          data-testid="previousButton"
           className="cursor-pointer p-4
                         flex items-center justify-center
                         bg-white rounded-full
@@ -37,6 +38,7 @@ const PaginateButtons = ({
       )}
 
       <div
+        data-testid="nextButton"
         className="cursor-pointer p-4
             flex items-center justify-center
             bg-white rounded-full

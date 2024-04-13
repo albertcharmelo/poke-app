@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
-import { SWRProvider } from '@/components/swr-provider';
-import Header from '@/components/Header';
+import { SWRProvider } from '@/components/provider/swr-provider';
+import Header from '@/components/atoms/Header';
 
 const poppins = Poppins({ weight: '400', subsets: ['latin'] });
 
@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <SWRProvider>
-      <html lang="es">
+      <html lang="en">
         <body className={poppins.className}>
           <Header />
           {children}

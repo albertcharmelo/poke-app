@@ -26,7 +26,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
         boxShadow:
           'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px',
       }}
-      className={`p-8 md:p-2 rounded-2xl bg-white flex flex-col justify-center items-center gap-2 cursor-pointer relative`}
+      className={`p-8 md:p-2 rounded-2xl bg-white flex flex-col justify-center items-center gap-2 cursor-pointer relative pokemonCard`}
     >
       {check && (
         <div
@@ -49,10 +49,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
       )}
       <Image
         src={imageUrl}
-        alt={name}
+        alt="pokemon image"
         width={112}
         height={96}
         className="mx-auto"
+        data-testid="pokemonCard"
       />
       <h3
         style={{ color: handleTypeColors(type) }}
