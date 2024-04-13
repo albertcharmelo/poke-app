@@ -45,8 +45,7 @@ To run tests, run the following command
 
 ## Demo
 
-[Go to demo, just click here!](https://poke-app-eight-theta.vercel.app/)
-
+[Go to demo, just click here!](https://poke-app-production.up.railway.app/)
 
 ## Screenshots
 
