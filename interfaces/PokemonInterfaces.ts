@@ -27,3 +27,8 @@ interface PokemonResult {
 interface PokemonListResponse {
   results: PokemonResult[];
 }
+
+interface PokemonStore {
+  pokemons: Pokemon[];
+  addPokemon: (pokemon: Pokemon) => void;
+}

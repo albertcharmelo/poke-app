@@ -1,11 +1,12 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { use, useEffect } from 'react';
 import HeaderPokemonCard from '../molecules/HeaderPokemonCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import BagdesTypesPokemon from '../molecules/BagdesTypesPokemon';
 import StatsPokemon from '../molecules/StatsPokemon';
 import MovePokemon from '../atoms/MovePokemon';
 import Image from 'next/image';
+import { usePokemonStore } from '@/store/usePokemonStore';
 
 interface PokemonCardDetailProps {
   pokemon: {
@@ -20,6 +21,22 @@ interface PokemonCardDetailProps {
 }
 
 const PokemonCardDetail = ({ pokemon, evolutions }: PokemonCardDetailProps) => {
+  const pokemonStore: PokemonStore = usePokemonStore();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    // Registrar que ha sido visto
+    pokemonStore.addPokemon({
+      id: pokemon.id,
+      name: pokemon.name,
+      image: pokemon.sprites.front_default,
+      types: pokemon.types.map(
+        (type: { type: { name: string } }) => type.type.name,
+      ),
+    });
+  }, [pokemon]);
+
   return (
     <div className="bg-white  flex flex-col items-center  rounded-3xl">
       <HeaderPokemonCard pokemon={pokemon} />
