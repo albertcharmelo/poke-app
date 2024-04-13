@@ -1,5 +1,5 @@
 'use client';
-import Header from '@/components/Header';
+import Loader from '@/components/atoms/Loader';
 import PokemonCardDetail from '@/components/organisms/PokemonCardDetail';
 import { usePokemonEvolutions } from '@/hooks/usePokemonEvolutions';
 
@@ -21,16 +21,24 @@ function PokemonPage() {
 
   if (error || dataError)
     return <div>Error al cargar la información del Pokémon.</div>;
-  if (!pokemon || loading) return <div>Cargando...</div>;
+  if (!pokemon || loading) {
+    return (
+      <div className="flex flex-col gap-2 justify-center items-center">
+        <div className="w-auto">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex flex-col justify-center px-8 pb-10 ">
+    <main className="flex flex-col justify-center px-8 pb-10 ">
       <div className="flex flex-col gap-2 justify-center items-center ">
         <div className="w-full lg:w-1/2 containerPokemonsDetails rounded-3xl ">
           <PokemonCardDetail pokemon={pokemon} evolutions={dataEvolution} />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

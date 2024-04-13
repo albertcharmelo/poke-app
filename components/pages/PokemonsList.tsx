@@ -1,16 +1,21 @@
 'use client';
-import PokemonCard from './atoms/PokemonCard';
+import PokemonCard from '../atoms/PokemonCard';
 import usePokemons from '@/hooks/usePokemons';
-
-import { useState } from 'react';
-import PaginateButtons from './atoms/PaginateButtons';
-
-const Container = () => {
-  const [pageIndex, setPageIndex] = useState(0);
+import PaginateButtons from '../atoms/PaginateButtons';
+import Loader from '../atoms/Loader';
+import usePagination from '@/hooks/usePagination';
+const PokemonsList = () => {
+  const [pageIndex, setPageIndex] = usePagination('page', 0);
   const { pokemons, error, isLoading } = usePokemons(pageIndex);
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="flex flex-col gap-2 justify-center items-center">
+        <div className="w-auto">
+          <Loader />
+        </div>
+      </div>
+    );
   }
 
   if (error) {
@@ -37,4 +42,4 @@ const Container = () => {
   );
 };
 
-export default Container;
+export default PokemonsList;

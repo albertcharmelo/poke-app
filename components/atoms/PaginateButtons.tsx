@@ -25,7 +25,12 @@ const PaginateButtons = ({
                         "
           onClick={() => setPageIndex((prev: number) => prev - 1)}
         >
-          <ChevronLeft size={24} />
+          <Image
+            src="/arrow_left.png"
+            width={24}
+            height={24}
+            alt="arrow left"
+          />
         </div>
       )}
 

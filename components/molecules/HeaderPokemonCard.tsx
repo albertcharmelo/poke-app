@@ -1,8 +1,9 @@
 'use client';
-import { handleNumberPokemon } from '@/utils/handleText';
+
 import React from 'react';
 import BackGroundImagePokemon from '../atoms/BackGroundImagePokemon';
 import PokemonImageWithCircle from '../atoms/PokemonImageWithCircle';
+import { handleNumberPokemon } from '@/utils/handleText';
 
 interface HeaderPokemonCardProps {
   pokemon: {
@@ -17,7 +18,12 @@ const HeaderPokemonCard = ({ pokemon }: HeaderPokemonCardProps) => {
   return (
     <BackGroundImagePokemon typeName={pokemon.types[0].type.name}>
       <div>
-        <h1 className=" capitalize text-3xl font-bold text-white">
+        <h1
+          style={{
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+          }}
+          className=" capitalize text-3xl font-bold text-white"
+        >
           {pokemon.name}
         </h1>
       </div>
@@ -26,11 +32,15 @@ const HeaderPokemonCard = ({ pokemon }: HeaderPokemonCardProps) => {
         imageSrc={pokemon.sprites.front_default}
         typeName={pokemon.types[0].type.name}
       />
-      {/* numero de pokemon */}
-      <div className="flex flex-col items-center justify-center">
-        <p className="text-white text-xl font-bold">
+      <div>
+        <h1
+          style={{
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+          }}
+          className=" capitalize text-3xl font-bold text-white"
+        >
           #{handleNumberPokemon(pokemon.id)}
-        </p>
+        </h1>
       </div>
     </BackGroundImagePokemon>
   );
