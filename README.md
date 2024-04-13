@@ -1,4 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# Pokedex App
+
+Pokedex App is a web-based Single Page Application (SPA) that allows users to explore the world of Pokémon using the Master-Detail design pattern. The app features a paginated list of Pokémon, allowing users to navigate through the vast array of creatures in the Pokémon universe.
+
+## Tech Stack
+
+**Framework:** [NextJS](https://nextjs.org/),TypeScript
+
+**Data Fetching:** [SWR](https://swr.vercel.app/es-ES), Fetch
+
+**Styles:** [TailwindCSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/)
+
+**Api:** [Pokémon API](https://pokeapi.co/)
+## Installation
+
+To get started with the Pokedex app, you will need to install the necessary Node modules. To do this, follow these steps:
+
+```bash
+  cd poke-app
+  npm i 
+
+```
 
 ## Getting Started
 
@@ -6,31 +28,39 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running Tests
 
-## Learn More
+To run tests, run the following command
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  npm run test
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Demo
 
-## Deploy on Vercel
+[Go to demo, just click here!](poke-es4s4s275-albert-charmelos-projects.vercel.app)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Screenshots
+
+![Home page](https://i.ibb.co/fvNgM5n/i-Phone-13-PRO-localhost.png)
+
+![Detail page](https://i.ibb.co/QkFGRBD/i-Phone-13-PRO-localhost-1.png)
+
+
+
+## Authors
+
+- [@albertcharmelo](https://github.com/albertcharmelo)
+
+
+## 🔗 Links
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/albert-charmelo/)
